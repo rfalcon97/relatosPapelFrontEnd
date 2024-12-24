@@ -196,16 +196,22 @@ export const BookList = () => {
         </div>
         <h1>Libros Disponibles</h1>
         <div className="book-list">
-          {filteredBooks.map((book) => (
-            <Book
-              key={book.id}
-              title={book.title}
-              author={book.author}
-              price={book.price}
-              image={book.image}
-              rating={book.rating}
-            />
-          ))}
+          {filteredBooks.length > 0 ? (
+            filteredBooks.map((book) => (
+              <Book
+                key={book.id}
+                title={book.title}
+                author={book.author}
+                price={book.price}
+                image={book.image}
+                rating={book.rating}
+              />
+            ))
+          ) : (
+            <p className="no-books-message">
+              No se encontraron libros que coincidan con la búsqueda.
+            </p>
+          )}
         </div>
       </div>
     </div>

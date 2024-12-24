@@ -65,3 +65,12 @@
   border-radius: 4px;
   font-size: 16px;
 }
+
+/* Estilo para el mensaje de libros no encontrados */
+.no-books-message {
+  grid-column: 1 / -1; /* Ocupar toda la fila en el grid */
+  text-align: center; /* Centrar el texto horizontalmente */
+  font-size: 18px;
+  color: #555;
+  margin-top: 20px;
+}
