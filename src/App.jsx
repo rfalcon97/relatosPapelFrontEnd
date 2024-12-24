@@ -1,16 +1,21 @@
 import "./App.css";
 import { Footer } from "./components/Footer";
-import { BookList } from "./views/BookList";
+import { AppRouter } from "./router/AppRouter";
 import { LoginView } from "./views/LoginView";
 
 function App() {
   return (
-    <>
-       {/*  <LoginView></LoginView>  */}
+   /*  <>
+        <LoginView/>  
 
-      <BookList />
+      
       <Footer />
-    </>
+    </> */
+
+    <>
+    <AppRouter /> {/* Aquí se cargan las vistas según las rutas */}
+    <Footer />
+  </>
   );
 }
 

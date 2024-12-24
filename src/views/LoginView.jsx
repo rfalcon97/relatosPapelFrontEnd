@@ -2,7 +2,9 @@ import { FormLogin } from "../components/FormLogin";
 import "./../styles/LoginView.css";
 import imgLogin from "../assets/img_login.png";
 
+
 export const LoginView = () => {
+    
   return (
     <div className="login-page">
       <div className="login-left">

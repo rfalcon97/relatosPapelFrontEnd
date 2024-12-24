@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import "./../styles/FormLogin.css";
 
 export const FormLogin = () => {
+    const navigate = useNavigate(); 
   return (
     <div className="login-form">
       <h2>Iniciar Sesión</h2>
@@ -17,7 +19,7 @@ export const FormLogin = () => {
             placeholder="Ingresa tu contraseña"
           />
         </div>
-        <button type="submit" className="login-button">
+        <button type="submit" className="login-button" onClick={() => navigate("/home")}>
           Iniciar Sesión
         </button>
       </form>

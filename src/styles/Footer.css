@@ -8,6 +8,7 @@
     left: 0; /* Asegura que el footer se alinee desde el extremo izquierdo */
     width: 100%; /* Ocupa todo el ancho */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+   
 }
 
 .footer-content {
