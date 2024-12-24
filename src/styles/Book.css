@@ -28,8 +28,28 @@
   }
   
   .book-author,
-  .book-price {
+  .book-price, .book-rating {
     font-size: 14px;
     color: #555;
   }
   
+
+  .book-button {
+    background-color: #282c34; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño del texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Animación de transición */
+  }
+  
+  .book-button:hover {
+    background-color: #0056b3; /* Cambia el color al pasar el cursor */
+
+  }
+  
+  .book-button:active {
+    background-color: #f7f7f7; /* Color al hacer clic */
+  }

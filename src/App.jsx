@@ -5,15 +5,9 @@ import { LoginView } from "./views/LoginView";
 
 function App() {
   return (
-   /*  <>
-        <LoginView/>  
-
-      
-      <Footer />
-    </> */
 
     <>
-    <AppRouter /> {/* Aquí se cargan las vistas según las rutas */}
+    <AppRouter /> 
     <Footer />
   </>
   );
