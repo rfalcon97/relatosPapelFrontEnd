@@ -1,0 +1,47 @@
+.book-info-container {
+    display: flex;
+    gap: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-info-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .book-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .book-info-details {
+    flex: 2;
+  }
+  
+  .book-info-details p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .add-to-cart-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #282c34; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #0056b3;
+  }
+  

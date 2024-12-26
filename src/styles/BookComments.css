@@ -1,0 +1,77 @@
+.book-comments {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.book-comments h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px; 
+  text-align: start;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-item {
+  margin-bottom: 10px; /* Reduce el margen entre comentarios */
+  padding: 10px 15px; /* Reduce el relleno interno */
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: flex-start; /* Asegura que los elementos estén alineados */
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Reduce el espacio entre el avatar y el texto */
+}
+
+.user-avatar {
+  width: 35px; /* Reduce el tamaño del avatar */
+  height: 35px;
+  background-color: #ffa726;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50%;
+  margin-right: 10px; /* Espacio entre avatar y texto */
+}
+
+.comment-details {
+  flex: 1; /* Ocupa el espacio restante */
+}
+
+.user-name {
+  font-size: 0.9rem; /* Reduce el tamaño de la fuente */
+  font-weight: bold;
+  margin-bottom: 2px; /* Reduce el espacio entre líneas */
+}
+
+.comment-date {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 5px; /* Reduce el margen inferior */
+}
+
+.comment-body p {
+  font-size: 0.9rem; /* Reduce el tamaño del texto del comentario */
+  color: #555;
+  line-height: 1.2; /* Reduce el espacio entre líneas */
+  max-height: 2.4em; /* Limita el texto a 2 líneas */
+  overflow: hidden; /* Oculta el contenido extra */
+  text-overflow: ellipsis; /* Agrega "..." al final si es muy largo */
+  white-space: nowrap; /* Evita saltos de línea */
+}

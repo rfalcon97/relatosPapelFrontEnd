@@ -1,5 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import "./../styles/Book.css";
-export const Book = ({ title, author, price, image, rating }) => {
+export const Book = ({ id, title, author, price, image, rating }) => {
+  const navigate = useNavigate(); 
+  const handleViewDetails = () => {
+    navigate(`/book/${id}`);
+  };
   return (
     <div className="book">
       <img src={image} alt={title} className="book-image" />
@@ -11,7 +16,7 @@ export const Book = ({ title, author, price, image, rating }) => {
         </p>
         <p className="book-price">${price}</p>
         <p className="book-rating">{rating}🌟</p>
-        <button className="book-button">Comprar</button>
+        <button className="book-button" onClick={handleViewDetails}>Comprar</button>
       </div>
     </div>
   );
