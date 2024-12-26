@@ -4,17 +4,14 @@ import { Header } from "../components/Header";
 import { BookInfo } from "../components/BookInfo";
 import { BookComments } from "../components/BookComments";
 import "./../styles/BookDetail.css";
-import { useState } from "react";
+import { useCart } from "../hooks/UseCart";
+
 
 export const BookDetail = () => {
   const { id } = useParams();
   const book = booksDataBase.find((b) => b.id === parseInt(id));
-  // Estado para el carrito
-  const [cartCount, setCartCount] = useState(0);
 
-  const addToCart = () => {
-    setCartCount(cartCount + 1); // Incrementa el contador del carrito
-  };
+  const { addToCart } = useCart(); // Usar el custom hook
 
   if (!book) {
     return <p>Libro no encontrado</p>;
@@ -22,18 +19,17 @@ export const BookDetail = () => {
 
   return (
     <div>
-      <Header  cartCount={cartCount}/>
+      <Header />
       <div className="book-detail">
-        {/* Encabezado con el título del libro */}
         <h1 className="book-title">{book.title}</h1>
-
-        {/* Contenedor principal dividido en dos columnas */}
         <div className="book-detail-main">
-          {/* Componente reutilizado: BookInfo */}
-          <BookInfo book={book} onAddToCart={addToCart} />
+          {/* Pasar solo onAddToCart como prop a BookInfo */}
+          <BookInfo
+            book={book}
+            onAddToCart={() => addToCart(book)}
+          />
         </div>
 
-        {/* Sección de comentarios */}
         <div className="book-comments-section">
           <BookComments comments={book.comentarios} />
         </div>

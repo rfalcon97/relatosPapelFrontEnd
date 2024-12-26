@@ -1,6 +1,6 @@
 import "./../styles/BookInfo.css";
 
-export const BookInfo = ({ book, onAddToCart  }) => {
+export const BookInfo = ({ book, onAddToCart }) => {
   return (
     <div className="book-info-container">
       {/* Imagen del libro */}
@@ -23,7 +23,11 @@ export const BookInfo = ({ book, onAddToCart  }) => {
         <p>
           <strong>Resumen:</strong> {book.summary}
         </p>
-        <button className="add-to-cart-button" onClick={onAddToCart}>Añadir al Carrito</button>
+
+        {/* Botón para agregar al carrito */}
+        <button className="add-to-cart-button" onClick={onAddToCart}>
+          Añadir al Carrito
+        </button>
       </div>
     </div>
   );
