@@ -5,12 +5,12 @@
   padding: 10px 20px;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ccc;
-  width: 100%; /* Asegura que ocupe todo el ancho */
-  box-sizing: border-box; /* Incluye el padding dentro del ancho total */
-  position: fixed; /* Mantén el header fijo en la parte superior */
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+  z-index: 1000;
 }
 
 .header-left {
@@ -18,37 +18,8 @@
   align-items: center;
 }
 
-.header-right {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.header-icon {
-  font-size: 18px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  position: relative; /* Posicionamiento relativo para el número del carrito */
-}
-
-.cart-count {
-  position: absolute;
-  top: -5px; /* Ajusta según la posición deseada */
-  right: -10px; /* Ajusta según la posición deseada */
-  background-color: #ff5722;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .header-home-button {
-  font-size: 18px;
+   font-size: 18px;
   font-weight: bold;
   color: #00693e; /* Verde oscuro */
   background: none;
@@ -62,4 +33,53 @@
 .header-home-button:hover {
   background-color: #282c34; /* Verde claro */
   color: white; /* Verde más oscuro al pasar el ratón */
+}
+
+
+.header-right {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.header-icon {
+  font-size: 18px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #ff5722;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
+.user-name {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
 }

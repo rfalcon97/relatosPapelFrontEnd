@@ -1,61 +1,66 @@
 /* Contenedor principal para los libros */
 .book-list-container {
-    margin-top: 100px; /* Mueve el margen superior aquí */
-    margin-bottom: 50px;
-  }
-  
-  /* Estilo para la lista de libros */
-  .book-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-   
-    justify-content: center;
-    background-color: #f7f7f7;
-  }
-  
-  /* Estilo para cada libro */
-  .book {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    background-color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.2s ease;
-  }
-  
-  .book:hover {
-    transform: scale(1.05);
-  }
-  
-  .book img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
-  
-  .book-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  
-  .book-author {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 10px;
-  }
-  
-  .book-price {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  /* Estilo para la barra de búsqueda */
+  margin-top: 100px;
+  /* Mueve el margen superior aquí */
+  margin-bottom: 50px;
+}
+
+.book-list-container h1 {
+  color: #ff5722;
+}
+
+/* Estilo para la lista de libros */
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+
+  justify-content: center;
+  background-color: #f7f7f7;
+}
+
+/* Estilo para cada libro */
+.book {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.book:hover {
+  transform: scale(1.05);
+}
+
+.book img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.book-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.book-author {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.book-price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilo para la barra de búsqueda */
 .search-bar {
   width: 100%;
   max-width: 400px;
@@ -68,8 +73,10 @@
 
 /* Estilo para el mensaje de libros no encontrados */
 .no-books-message {
-  grid-column: 1 / -1; /* Ocupar toda la fila en el grid */
-  text-align: center; /* Centrar el texto horizontalmente */
+  grid-column: 1 / -1;
+  /* Ocupar toda la fila en el grid */
+  text-align: center;
+  /* Centrar el texto horizontalmente */
   font-size: 18px;
   color: #555;
   margin-top: 20px;

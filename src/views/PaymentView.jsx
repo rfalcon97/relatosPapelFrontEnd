@@ -9,10 +9,17 @@ import { Header } from "../components/Header";
 import useSweetAlert from "../hooks/useSweetAlert"; // Importa el hook de SweetAlert
 
 const PaymentView = () => {
-  const { cart, clearCart, totalPrice } = useCart();
+  const {
+    cart,
+    clearCart,
+    totalPrice,
+    addToCart,
+    decrementQuantity,
+    removeFromCart,
+  } = useCart(); // Incluye las funciones de contexto
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false); // Estado para controlar el loading
-  const { showSuccess } = useSweetAlert(); 
+  const { showSuccess } = useSweetAlert();
 
   const handlePaymentSuccess = () => {
     setIsLoading(true); // Mostrar el loading
@@ -44,9 +51,9 @@ const PaymentView = () => {
             <div className="cart-summary-container">
               <CartTable
                 cart={cart}
-                addToCart={() => {}} // Desactivamos esta funcionalidad aquí
-                decrementQuantity={() => {}} // Desactivamos esta funcionalidad aquí
-                removeFromCart={() => {}} // Desactivamos esta funcionalidad aquí
+                addToCart={addToCart} // Habilita la funcionalidad de agregar al carrito
+                decrementQuantity={decrementQuantity} // Habilita la funcionalidad de disminuir cantidad
+                removeFromCart={removeFromCart} // Habilita la funcionalidad de eliminar productos
               />
               <div className="total-payment-container">
                 <p>Total a Pagar:</p>

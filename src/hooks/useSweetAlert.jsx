@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-
+import './../styles/SweetAlert.css';
 const useSweetAlert = () => {
   // Mostrar mensaje de éxito
   const showSuccess = (title, text) => {
@@ -8,7 +8,10 @@ const useSweetAlert = () => {
       text: text || "La operación se realizó correctamente.",
       icon: "success",
       confirmButtonText: "OK",
-    }); // Retorna una promesa
+      customClass: {
+        confirmButton: "swal-custom-button", // Clase personalizada para el botón
+      },
+    });
   };
 
   // Mostrar mensaje de error
@@ -18,6 +21,9 @@ const useSweetAlert = () => {
       text: text || "Algo salió mal. Por favor, inténtalo de nuevo.",
       icon: "error",
       confirmButtonText: "OK",
+      customClass: {
+        confirmButton: "swal-custom-button",
+      },
     });
   };
 
@@ -28,6 +34,9 @@ const useSweetAlert = () => {
       text: text || "Aquí tienes más detalles.",
       icon: "info",
       confirmButtonText: "OK",
+      customClass: {
+        confirmButton: "swal-custom-button",
+      },
     });
   };
 
@@ -38,10 +47,12 @@ const useSweetAlert = () => {
       text: text || "Revisa esta información antes de continuar.",
       icon: "warning",
       confirmButtonText: "OK",
+      customClass: {
+        confirmButton: "swal-custom-button",
+      },
     });
   };
 
-  // Retornar las funciones para que puedan ser usadas
   return {
     showSuccess,
     showError,

@@ -39,14 +39,15 @@ export const CartProvider = ({ children }) => {
 
   // Reducir la cantidad de un producto en el carrito
   const decrementQuantity = (productId) => {
-    setCart((prevCart) =>
-      prevCart
-        .map((item) =>
-          item.id === productId
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-        .filter((item) => item.quantity > 0) // Eliminar productos con cantidad 0
+    setCart(
+      (prevCart) =>
+        prevCart
+          .map((item) =>
+            item.id === productId
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          )
+          .filter((item) => item.quantity > 0) // Eliminar productos con cantidad 0
     );
   };
 

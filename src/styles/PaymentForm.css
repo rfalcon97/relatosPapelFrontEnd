@@ -5,10 +5,10 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+
   .payment-form-container h2 {
     margin-bottom: 20px;
-    color: #333;
+    color: #ff5722;
   }
   
   .payment-form-container form {
@@ -40,4 +40,4 @@
   .payment-form-container .pay-button:hover {
     background-color: #03c03c;
   }
-  
+ 

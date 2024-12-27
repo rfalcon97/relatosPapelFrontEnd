@@ -1,0 +1,15 @@
+/* Personalización del botón "OK" */
+.swal-custom-button {
+    background-color: #00693e !important; /* Cambia el color del botón */
+    color: white !important; /* Cambia el color del texto */
+    border: none !important; /* Elimina el borde */
+    border-radius: 4px !important; /* Bordes redondeados */
+    padding: 10px 20px !important; /* Tamaño del botón */
+    font-size: 16px !important; /* Tamaño de la fuente */
+    cursor: pointer !important; /* Cambia el cursor al pasar por encima */
+  }
+  
+  .swal-custom-button:hover {
+    background-color: #03c03c !important; /* Color al pasar el cursor */
+  }
+  

@@ -6,11 +6,10 @@ import { AppRouter } from "./router/AppRouter";
 
 function App() {
   return (
-
     <CartProvider>
-      <AppRouter />
-      <Footer />
-    </CartProvider>
+    <AppRouter />
+    <Footer />
+  </CartProvider>
   );
 }
 
