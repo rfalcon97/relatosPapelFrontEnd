@@ -1,6 +1,14 @@
 import "./../styles/BookInfo.css";
-
+import useSweetAlert from "./../hooks/useSweetAlert";
 export const BookInfo = ({ book, onAddToCart }) => {
+  const { showSuccess } = useSweetAlert(); // Importar función de éxito
+  const handleAddToCart = () => {
+    onAddToCart(); // Llama a la función para agregar al carrito
+    showSuccess(
+      "¡Agregado al carrito!",
+      `"${book.title}" ha sido añadido exitosamente.`
+    );
+  };
   return (
     <div className="book-info-container">
       {/* Imagen del libro */}
@@ -25,7 +33,7 @@ export const BookInfo = ({ book, onAddToCart }) => {
         </p>
 
         {/* Botón para agregar al carrito */}
-        <button className="add-to-cart-button" onClick={onAddToCart}>
+        <button className="add-to-cart-button" onClick={handleAddToCart}>
           Añadir al Carrito
         </button>
       </div>
