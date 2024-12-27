@@ -4,7 +4,7 @@ import ClipLoader from "react-spinners/ClipLoader"; // Importa el loader
 import CartTable from "../components/CartTable";
 import PaymentForm from "../components/PaymentForm";
 import "./../styles/PaymentView.css";
-import { useCart } from "../hooks/UseCart";
+import { useCart } from "../hooks/useCart";
 import { Header } from "../components/Header";
 import useSweetAlert from "../hooks/useSweetAlert"; // Importa el hook de SweetAlert
 
