@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import CartTable from "../components/CartTable";
 import { Header } from "../components/Header";
-import { useCart } from "../hooks/UseCart";
+import { useCart } from "../hooks/useCart";
 import "./../styles/CartView.css";
 
 

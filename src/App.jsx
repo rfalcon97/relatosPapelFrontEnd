@@ -1,6 +1,6 @@
 import "./App.css";
 import { Footer } from "./components/Footer";
-import { CartProvider } from "./hooks/UseCart";
+import { CartProvider } from "./hooks/useCart";
 
 import { AppRouter } from "./router/AppRouter";
 

@@ -4,7 +4,7 @@ import { Header } from "../components/Header";
 import { BookInfo } from "../components/BookInfo";
 import { BookComments } from "../components/BookComments";
 import "./../styles/BookDetail.css";
-import { useCart } from "../hooks/UseCart";
+import { useCart } from "../hooks/useCart";
 
 
 export const BookDetail = () => {

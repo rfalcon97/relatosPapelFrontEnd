@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../hooks/UseCart";
+import { useCart } from "../hooks/useCart";
 import "./../styles/Header.css";
 import imgAvatar from "../assets/avatar.png";
 
