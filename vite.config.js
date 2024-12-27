@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist', // Asegúrate de que el directorio de salida sea 'dist'
-  }
+  },
+  base: '/'
 })
