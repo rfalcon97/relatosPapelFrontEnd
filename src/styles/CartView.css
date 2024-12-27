@@ -13,93 +13,6 @@ h1 {
     color: #333;
 }
 
-.cart-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.cart-table th,
-.cart-table td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    /* Alinea verticalmente */
-    justify-content: center;
-    /* Alinea horizontalmente */
-    gap: 10px;
-    /* Espaciado entre los botones y la cantidad */
-}
-
-.quantity-controls button {
-    padding: 5px 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* Botón "menos" */
-.quantity-controls button:first-child {
-    background-color: #ff4d4f;
-    /* Rojo para el botón "menos" */
-    color: white;
-    border: none;
-}
-
-.quantity-controls button:first-child:hover {
-    background-color: #d9363e;
-}
-
-/* Botón "más" */
-.quantity-controls button:last-child {
-    background-color: #28a745;
-    /* Verde para el botón "más" */
-    color: white;
-    border: none;
-}
-
-.quantity-controls button:last-child:hover {
-    background-color: #218838;
-}
-
-/* Estilo para la cantidad */
-.quantity-controls span {
-    min-width: 30px;
-    /* Asegura un ancho fijo */
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.quantity-controls button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.quantity-controls span {
-    min-width: 20px;
-    text-align: center;
-}
-
-.remove-button {
-    padding: 5px 10px;
-    background-color: #ff4d4f;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.remove-button:hover {
-    background-color: #d9363e;
-}
-
 .cart-summary {
     margin-top: 20px;
     text-align: right;
@@ -116,29 +29,21 @@ h1 {
 
 .clear-cart-button:hover {
     background-color: #0056b3;
-
 }
 
 /* Estilo para resaltar el total a pagar */
-/* Estilo para resaltar el total a pagar con un cuadro */
 .total-price-highlight {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #00693e;
-    /* Color verde oscuro que combina con el botón de pagar */
-    background-color: #e6f5eb;
-    /* Fondo verde claro */
+    color: #00693e; /* Color verde oscuro que combina con el botón de pagar */
+    background-color: #e6f5eb; /* Fondo verde claro */
     padding: 10px 20px;
     border: 2px solid #00693e;
-    /* Borde del cuadro */
     border-radius: 8px;
     display: inline-block;
-    /* Hace que el cuadro se ajuste al texto */
     margin-top: 10px;
 }
 
-
-/* Estilo para el botón de pagar */
 .pay-button {
     padding: 10px 20px;
     background-color: #00693E;

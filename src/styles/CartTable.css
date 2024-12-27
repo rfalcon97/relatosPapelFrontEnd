@@ -1,0 +1,73 @@
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    justify-content: center; /* Alinea horizontalmente */
+    gap: 10px; /* Espaciado entre los botones y la cantidad */
+}
+
+.quantity-controls button {
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+/* Botón "menos" */
+.quantity-controls button:first-child {
+    background-color: #ff4d4f; /* Rojo para el botón "menos" */
+    color: white;
+}
+
+.quantity-controls button:first-child:hover {
+    background-color: #d9363e;
+}
+
+/* Botón "más" */
+.quantity-controls button:last-child {
+    background-color: #28a745; /* Verde para el botón "más" */
+    color: white;
+}
+
+.quantity-controls button:last-child:hover {
+    background-color: #218838;
+}
+
+/* Estilo para la cantidad */
+.quantity-controls span {
+    min-width: 30px; /* Asegura un ancho fijo */
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.quantity-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.remove-button {
+    padding: 5px 10px;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    background-color: #d9363e;
+}
