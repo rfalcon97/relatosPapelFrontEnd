@@ -33,3 +33,24 @@
     display: block;
     margin-top: 5px;
   }
+  .loading-overlay {
+    position: fixed; /* Fijo para cubrir toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo negro más opaco */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Asegúrate de que esté sobre todos los elementos */
+  }
+  
+  .loading-overlay p {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    text-align: center;
+  }
+  
