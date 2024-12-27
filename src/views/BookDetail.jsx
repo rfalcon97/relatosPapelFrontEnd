@@ -21,7 +21,7 @@ export const BookDetail = () => {
     <div>
       <Header />
       <div className="book-detail">
-        <h1 className="book-title">{book.title}</h1>
+       
         <div className="book-detail-main">
           {/* Pasar solo onAddToCart como prop a BookInfo */}
           <BookInfo

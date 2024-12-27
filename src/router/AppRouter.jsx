@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { LoginView } from "../views/LoginView";
 import { BookList } from "../views/BookList";
 import { BookDetail } from "../views/BookDetail";
+import CartView from "../views/CartView";
+
+
 
 export const AppRouter = () => {
   return (
@@ -15,6 +18,8 @@ export const AppRouter = () => {
         <Route path="/home" element={<BookList />} />
 
         <Route path="/book/:id" element={<BookDetail />} />
+
+        <Route path="/car" element={<CartView />} />
         
         {/* Redirige cualquier ruta no encontrada a /login */}
         <Route path="*" element={<LoginView />} />

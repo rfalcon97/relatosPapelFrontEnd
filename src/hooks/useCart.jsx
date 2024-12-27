@@ -14,29 +14,55 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  // Agregar un producto al carrito o incrementar su cantidad
   const addToCart = (product) => {
     setCart((prevCart) => {
       const existingProduct = prevCart.find((item) => item.id === product.id);
       if (existingProduct) {
-        // Si el producto ya existe, simplemente no hacemos nada
-        return prevCart;
+        // Incrementar la cantidad si el producto ya existe
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
       } else {
-        // Agregar el producto al carrito
-        return [...prevCart, product];
+        // Agregar nuevo producto con cantidad inicial 1
+        return [...prevCart, { ...product, quantity: 1 }];
       }
     });
   };
 
+  // Eliminar un producto completamente del carrito
   const removeFromCart = (productId) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
+  // Reducir la cantidad de un producto en el carrito
+  const decrementQuantity = (productId) => {
+    setCart((prevCart) =>
+      prevCart
+        .map((item) =>
+          item.id === productId
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0) // Eliminar productos con cantidad 0
+    );
+  };
+
+  // Vaciar el carrito
   const clearCart = () => {
     setCart([]);
   };
 
-  const totalItems = cart.length; // Número total de productos en el carrito
-  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0); // Total a pagar
+  // Calcular el número total de productos (sumar cantidades)
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Calcular el precio total del carrito
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   return (
     <CartContext.Provider
@@ -44,6 +70,7 @@ export const CartProvider = ({ children }) => {
         cart,
         addToCart,
         removeFromCart,
+        decrementQuantity,
         clearCart,
         totalItems,
         totalPrice,

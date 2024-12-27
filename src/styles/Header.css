@@ -46,3 +46,20 @@
   align-items: center;
   justify-content: center;
 }
+
+.header-home-button {
+  font-size: 18px;
+  font-weight: bold;
+  color: #00693e; /* Verde oscuro */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.header-home-button:hover {
+  background-color: #282c34; /* Verde claro */
+  color: white; /* Verde más oscuro al pasar el ratón */
+}
