@@ -12,23 +12,18 @@ export const AppRouter = () => {
   return (
     <Router>
       <SessionProvider>
-        {" "}
         {/* Mover SessionProvider aquí */}
         <Routes>
           {/* Ruta para el Login */}
           <Route path="/login" element={<LoginView />} />
-
           {/* Ruta para la lista de libros */}
           <Route path="/home" element={<BookList />} />
-
           <Route path="/book/:id" element={<BookDetail />} />
-
           <Route path="/car" element={<CartView />} />
-
           <Route path="/payment" element={<PaymentView />} />
-
           {/* Redirige cualquier ruta no encontrada a /login */}
-          <Route path="*" element={<NotFoundView />} /> {/* Página no encontrada */}
+          <Route path="*" element={<NotFoundView />} />{" "}
+          {/* Página no encontrada */}
         </Routes>
       </SessionProvider>
     </Router>
