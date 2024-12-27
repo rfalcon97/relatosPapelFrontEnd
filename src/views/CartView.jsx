@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import CartTable from "../components/CartTable";
 import { Header } from "../components/Header";
 import { useCart } from "../hooks/UseCart";
+import "./../styles/CartView.css";
 
 
 const CartView = () => {
