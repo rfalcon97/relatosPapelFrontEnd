@@ -1,58 +1,135 @@
-import { useState } from "react";
-import { Book } from "../components/Book";
-import { Header } from "../components/Header";
-import "./../styles/BookList.css";
-import { booksDataBase } from "../database/book";
+import { useState, useEffect } from 'react';
+import { Book } from '../components/Book';
+import { Header } from '../components/Header';
+import './../styles/BookList.css';
 
 export const BookList = () => {
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para la barra de búsqueda
-  const books = booksDataBase; // Base de datos de libros
+  const [books, setBooks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Filtrar los libros según el término de búsqueda
-  const filteredBooks = books.filter((book) =>
-    book.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Función para cargar todos los libros
+  const fetchAllBooks = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('http://localhost:8762/back-end-ms-books-catalogue/books', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ targetMethod: "GET" })
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setBooks(data);
+    } catch (error) {
+      setError('Failed to fetch all books: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Efecto para cargar libros cuando el componente se monta y cuando se limpia el campo de búsqueda
+  useEffect(() => {
+    fetchAllBooks();
+  }, []);
+
+  // Efecto para manejar la búsqueda
+  useEffect(() => {
+    if (searchTerm.trim()) {
+      handleSearch();
+    } else {
+      fetchAllBooks(); // Vuelve a cargar todos los libros si se limpia el campo de búsqueda
+    }
+  }, [searchTerm]);
+
+  // Función para manejar la búsqueda
+  const handleSearch = async () => {
+    setLoading(true);
+    const urls = 'http://localhost:8762/back-end-ms-books-catalogue/books/finds';
+    const requests = [
+      fetch(urls, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          targetMethod: "GET",
+          queryParams: { title: [searchTerm] }
+        })
+      }),
+      fetch(urls, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          targetMethod: "GET",
+          queryParams: { isbn: [searchTerm] }
+        })
+      }),
+      fetch(urls, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          targetMethod: "GET",
+          queryParams: { author: [searchTerm] }
+        })
+      })
+    ];
+
+    try {
+      const responses = await Promise.all(requests);
+      const booksArray = await Promise.all(responses.map(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      }));
+
+      // Combina todos los libros en un solo array y elimina duplicados
+      const combinedBooks = Array.from(new Set(booksArray.flat().map(book => JSON.stringify(book)))).map(str => JSON.parse(str));
+      setBooks(combinedBooks);
+    } catch (error) {
+      setError('Failed to fetch books: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       <Header />
       <div className="book-list-container">
         <div>
           <h1>¡Bienvenido a Relatos de Papel!</h1>
-          <p>
-            En nuestra librería encontrarás una gran selección de libros de
-            diferentes géneros y autores.
-          </p>
+          <p>En nuestra librería encontrarás una gran selección de libros de diferentes géneros y autores.</p>
         </div>
         <div>
-          {/* Barra de búsqueda */}
           <input
             type="text"
-            placeholder="Buscar libros por título..."
+            placeholder="Buscar libros por título, autor o ISBN"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-bar"
           />
         </div>
-        <h1>Libros Disponibles</h1>
-        <div className="book-list">
-          {filteredBooks.length > 0 ? (
-            filteredBooks.map((book) => (
-              <Book
-                key={book.id}
-                id={book.id}
-                title={book.title}
-                author={book.author}
-                price={book.price}
-                image={book.image}
-                rating={book.rating}
-              />
-            ))
-          ) : (
-            <p className="no-books-message">
-              No se encontraron libros que coincidan con la búsqueda.
-            </p>
-          )}
-        </div>
+        {loading ? (
+          <p>Cargando libros...</p>
+        ) : error ? (
+          <p>Error: {error}</p>
+        ) : (
+          <>
+            <h1>Libros Disponibles</h1>
+            <div className="book-list">
+              {books.length > 0 ? (
+                books.map(book => (
+                  <Book
+                    key={book.id}
+                    {...book}
+                  />
+                ))
+              ) : (
+                <p className="no-books-message">No se encontraron libros que coincidan con la búsqueda.</p>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

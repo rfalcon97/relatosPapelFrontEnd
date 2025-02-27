@@ -33,9 +33,9 @@ export const Header = () => {
           <img src={imgAvatar} alt="Avatar" className="user-avatar" />
           <span className="user-name">{user.name}</span>
         </div>
-        <button className="header-icon" onClick={handleViewCart}>
+{/*         <button className="header-icon" onClick={handleViewCart}>
           🛒 <span className="cart-count">{totalItems}</span>
-        </button>
+        </button> */}
         <button className="header-icon" onClick={handleGoLogin}>
           🔒
         </button>
