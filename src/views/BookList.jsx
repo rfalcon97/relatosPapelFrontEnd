@@ -16,8 +16,10 @@ export const BookList = () => {
       const response = await fetch('https://gateway-production-998f.up.railway.app/back-end-ms-books-catalogue/publications', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ targetMethod: "GET" })
+        body: JSON.stringify({ targetMethod: "GET" , queryParams:{}})
       });
+
+      console.log(response, 'la respuesta');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
