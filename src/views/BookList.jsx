@@ -13,7 +13,7 @@ export const BookList = () => {
   const fetchAllBooks = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8762/back-end-ms-books-catalogue/books', {
+      const response = await fetch('https://gateway-production-998f.up.railway.app/back-end-ms-books-catalogue/publications', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ targetMethod: "GET" })
@@ -47,7 +47,7 @@ export const BookList = () => {
   // Función para manejar la búsqueda
   const handleSearch = async () => {
     setLoading(true);
-    const urls = 'http://localhost:8762/back-end-ms-books-catalogue/books/finds';
+    const urls = 'https://gateway-production-998f.up.railway.app/back-end-ms-books-catalogue/publications';
     const requests = [
       fetch(urls, {
         method: 'POST',
@@ -57,20 +57,20 @@ export const BookList = () => {
           queryParams: { title: [searchTerm] }
         })
       }),
-      fetch(urls, {
+       fetch(urls, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           targetMethod: "GET",
           queryParams: { isbn: [searchTerm] }
         })
-      }),
+      }), 
       fetch(urls, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           targetMethod: "GET",
-          queryParams: { author: [searchTerm] }
+          queryParams: { authorValues: [searchTerm] }
         })
       })
     ];
