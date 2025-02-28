@@ -9,12 +9,9 @@ export const BookList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-// Función para cargar todos los libros con reintentos
-const fetchAllBooks = async () => {
-  setLoading(true);
-  let attempts = 5;  // Número máximo de intentos
-
-  for (let i = 0; i < attempts; i++) {
+  // Función para cargar todos los libros
+  const fetchAllBooks = async () => {
+    setLoading(true);
     try {
       const response = await fetch('https://gateway-production-998f.up.railway.app/back-end-ms-books-catalogue/publications', {
         method: 'POST',
@@ -22,24 +19,18 @@ const fetchAllBooks = async () => {
         body: JSON.stringify({ targetMethod: "GET" , queryParams:{}})
       });
 
-      console.log(response, 'la respuesta'); // Log de la respuesta
+      console.log(response, 'la respuesta');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
       setBooks(data);
-      return; // Si todo sale bien, salir del bucle y de la función
     } catch (error) {
-      if (i === attempts - 1) {
-        setError('Failed to fetch all books after several attempts: ' + error.message); // Se configura el error después del último intento
-      } else {
-        console.error('Attempt ' + (i + 1) + ' failed: ' + error.message); // Log del error en cada intento fallido
-      }
+      setError('Failed to fetch all books: ' + error.message);
+    } finally {
+      setLoading(false);
     }
-  }
-
-  setLoading(false); // Asegurarse de que setLoading se llama solo una vez al final
-};
+  };
 
   // Efecto para cargar libros cuando el componente se monta y cuando se limpia el campo de búsqueda
   useEffect(() => {
