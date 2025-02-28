@@ -18,13 +18,18 @@ export const BookList = () => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ targetMethod: "GET" , queryParams:{}})
       });
-
-      console.log(response, 'la respuesta');
+      
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      const data = await response.json();
-      setBooks(data);
+      const jsonResponse = await response.json();
+      const booksData = jsonResponse.books;  // Asegúrate de acceder a la propiedad correcta que contiene los libros
+  
+      if (!booksData || booksData.length === 0) {
+        throw new Error('No books found');
+      }
+  
+      setBooks(booksData);
     } catch (error) {
       setError('Failed to fetch all books: ' + error.message);
     } finally {
@@ -47,7 +52,7 @@ export const BookList = () => {
   }, [searchTerm]);
 
   // Función para manejar la búsqueda
-  const handleSearch = async () => {
+/*    const handleSearch = async () => {
     setLoading(true);
     const urls = 'https://gateway-production-998f.up.railway.app/back-end-ms-books-catalogue/publications';
     const requests = [
@@ -84,6 +89,8 @@ export const BookList = () => {
         return res.json();
       }));
 
+      console.log(booksArray, 'booksArray');
+
       // Combina todos los libros en un solo array y elimina duplicados
       const combinedBooks = Array.from(new Set(booksArray.flat().map(book => JSON.stringify(book)))).map(str => JSON.parse(str));
       setBooks(combinedBooks);
@@ -92,7 +99,49 @@ export const BookList = () => {
     } finally {
       setLoading(false);
     }
+  };  */
+
+   const handleSearch = async () => {
+    setLoading(true);
+    const baseUrl = 'https://gateway-production-998f.up.railway.app/back-end-ms-books-catalogue/publications';
+    const createRequest = (queryParam) => ({
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        targetMethod: "GET",
+        queryParams: queryParam
+      })
+    });
+  
+    // Preparar las solicitudes para cada tipo de búsqueda
+    const requests = [
+      fetch(baseUrl, createRequest({ title: [searchTerm] })),  // Búsqueda por título
+      //fetch(baseUrl, createRequest({ isbn: [searchTerm] })),   // Búsqueda por ISBN
+      fetch(baseUrl, createRequest({ authorValues: [searchTerm] }))  // Búsqueda por autor
+    ];
+  
+    try {
+      // Ejecutar todas las solicitudes simultáneamente
+      const responses = await Promise.all(requests);
+  
+      // Procesar todas las respuestas juntas
+      const booksArray = await Promise.all(responses.map(async (res) => {
+        if (!res.ok) throw new Error(`Network response was not ok from ${res.url}`);
+        const jsonResponse = await res.json();
+        return jsonResponse.books || [];
+      }));
+  
+      // Combinar todos los libros en un solo array y eliminar duplicados
+      const bookMap = new Map();
+      booksArray.flat().forEach(book => bookMap.set(book.id, book));
+      setBooks(Array.from(bookMap.values()));
+    } catch (error) {
+      setError(`Failed to fetch books: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
   };
+  
 
   return (
     <div>
